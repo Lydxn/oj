@@ -1,0 +1,122 @@
+/*
+$bg: #000000;
+$code-bg: #242424;
+$code-border: #404040;
+$code-fg: #d0d0d0;
+$code-inline-fg: #ffbbbb;
+$fg: #ffffff;
+$input: #00bfff;
+$output: #ff9900;
+$td-row: #212121;
+$tertiary: #0088ff;
+*/
+@font-face {
+  font-family: "Ubuntu";
+  font-weight: 400;
+  src: url("../fonts/ubuntu/Ubuntu-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Ubuntu Mono";
+  font-weight: 400;
+  src: url("../fonts/ubuntu-mono/UbuntuMono-Regular.ttf") format("truetype");
+}
+.problem-header {
+  border-bottom: 1px solid #000000;
+  content: " ";
+  display: block;
+  margin: 1.5rem 0 1rem;
+  padding-bottom: 0.2em;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+.problem-header__title {
+  text-align: center;
+}
+.problem-header__limits {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.martor code {
+  color: #c00000;
+  font-family: "Ubuntu Mono";
+  margin: 0.2rem;
+}
+.martor h1, .martor h2 {
+  border-bottom: 1px solid #000000;
+  content: " ";
+  display: block;
+  margin: 1.5rem 0 1rem;
+  padding-bottom: 0.2em;
+  font-family: "Ubuntu";
+}
+.martor ul {
+  list-style-position: inside;
+}
+.martor .sample {
+  display: flex;
+  justify-content: space-around;
+}
+.martor .sample__box {
+  background-color: #f5f5f5;
+  border: 1px solid #dbdbdb;
+  border-radius: 3px;
+  flex-grow: 1;
+  margin: 1rem;
+  padding: 0.5em;
+}
+.martor .sample__box--input {
+  border-left: 3px solid #00bfff;
+}
+.martor .sample__box--input > .sample__header {
+  border-bottom: 1px solid #00bfff;
+}
+.martor .sample__box--input:hover {
+  background-color: #ddf0f6;
+}
+.martor .sample__box--output {
+  border-left: 3px solid #ff9900;
+}
+.martor .sample__box--output > .sample__header {
+  border-bottom: 1px solid #ff9900;
+}
+.martor .sample__box--output:hover {
+  background-color: #f6ecdd;
+}
+.martor .sample__content {
+  color: #404040;
+  font-family: "Ubuntu Mono";
+}
+.martor .sample__copy {
+  align-items: center;
+  display: inline-flex;
+  float: right;
+  margin-left: auto;
+}
+.martor .sample__copy-msg {
+  color: #000000;
+  font-size: 0.8rem;
+  margin: 0 0.5rem;
+  opacity: 0;
+}
+.martor .sample__header {
+  display: flex;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.martor .sample__copy-icon {
+  fill: #000000;
+  height: 1rem;
+  width: 1rem;
+}
+.martor .sample__copy-icon:hover {
+  cursor: pointer;
+}
+.martor .sample__title {
+  color: #000000;
+  font-family: "Ubuntu";
+  font-weight: 600;
+}
+
+/*# sourceMappingURL=problem.css.map */

@@ -1,0 +1,59 @@
+{% load static %}
+
+{% load socialaccount %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>{% block title %}{% endblock %} | {{ SITE_NAME }}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        {% block css %}{% endblock %}
+        <script src="{% static 'js/base.js' %}" defer></script>
+        {% block js %}{% endblock %}
+    </head>
+    <body>
+        <header>
+            <nav class="nav-bar">
+                <div class="nav-bar__left">
+                    <a class="nav-bar__button" href="/">
+                        <i class="nav-bar__icon fa-solid fa-house"></i>
+                        Home
+                    </a>
+                    <a class="nav-bar__button" href="/problemset/">
+                        <i class="nav-bar__icon fa-solid fa-book"></i>
+                        Problemset
+                    </a>
+                    <a class="nav-bar__button" href="/users/">
+                        <i class="nav-bar__icon fa-solid fa-user"></i>
+                        Users
+                    </a>
+                </div>
+                <div class="nav-bar__right">
+                    <a class="nav-bar__button" href="/about/">
+                        <i class="nav-bar__icon fa-solid fa-circle-info"></i>
+                        About
+                    </a>
+                    {% if user.is_authenticated %}
+                    <a class="nav-bar__button" href="/profile/">
+                        <img class="nav-bar__avatar" src="//avatars.githubusercontent.com/{{ user }}">
+                        <b>{{ user }}</b>
+                    </a>
+                    <a class="nav-bar__button nav-bar__button--icon" href="{% url 'account_logout' %}">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                    </a>
+                    {% else %}
+                    <a class="nav-bar__button nav-bar__button--icon" href="{% provider_login_url 'github' %}">
+                        <i class="fa-solid fa-right-to-bracket"></i>
+                    </a>
+                    {% endif %}
+                </div>
+            </nav>
+        </header>
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+    </body>
+</html>

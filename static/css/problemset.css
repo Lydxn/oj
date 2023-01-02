@@ -1,0 +1,34 @@
+/*
+$bg: #000000;
+$code-bg: #242424;
+$code-border: #404040;
+$code-fg: #d0d0d0;
+$code-inline-fg: #ffbbbb;
+$fg: #ffffff;
+$input: #00bfff;
+$output: #ff9900;
+$td-row: #212121;
+$tertiary: #0088ff;
+*/
+.pset-table {
+  float: left;
+  margin-top: 8rem;
+  width: 70%;
+}
+.pset-table__item-name {
+  width: 100%;
+}
+.pset-table__item-name a {
+  color: #0088ff;
+  font-weight: bold;
+  text-decoration: none;
+}
+.pset-table__item-name a:hover {
+  color: #000000;
+  text-decoration: underline;
+}
+.pset-table__item-tags {
+  padding-right: 2rem;
+}
+
+/*# sourceMappingURL=problemset.css.map */

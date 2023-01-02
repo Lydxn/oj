@@ -1,0 +1,29 @@
+@use 'theme';
+
+$link-color: theme.$tertiary;
+$link-hover-color: theme.$fg;
+
+.pset-table {
+    float: left;
+    margin-top: 8rem;
+    width: 70%;
+
+    &__item-name {
+        width: 100%;
+
+        a {
+            color: $link-color;
+            font-weight: bold;
+            text-decoration: none;
+
+            &:hover {
+                color: $link-hover-color;
+                text-decoration: underline;
+            }
+        }
+    }
+
+    &__item-tags {
+        padding-right: 2rem;
+    }
+}

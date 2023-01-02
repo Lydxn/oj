@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/problemset.css' %}">
+{% endblock %}
+
+{% block content %}
+<table class="pset-table">
+    <thead>
+        <tr>
+            <th class="pset-table__item-name">Name</th>
+            <th class="pset-table__item-tags">Tags</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in '0123456789' %}
+        {% for problem in problemset %}
+        <tr>
+            <td class="pset-table__item-name">
+                <a href="../problem/{{ problem.slug }}/">{{ problem.name }}</a>
+            </td>
+            <td class="pset-table__item-tags">{{ problem.tags.all|join:', ' }}</td>
+        {% endfor %}
+        {% endfor %}
+        </tr>
+    </tbody>
+</table>
+{% endblock %}

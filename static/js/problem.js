@@ -1,16 +1,16 @@
-// Copies the sample input/output to the clipboard.
+/* Copy the sample input/output to the clipboard. */
 (function() {
-    const icons = document.getElementsByClassName('sample__copy-icon');
+    const icons = document.getElementsByClassName('sample-copy-icon');
     for (const icon of icons) {
         icon.addEventListener('click', () => {
             // Copy to clipboard
             navigator.clipboard.writeText(
-                icon.closest('.sample__box')
-                    .getElementsByClassName('sample__content')[0]
+                icon.closest('.sample-box')
+                    .getElementsByClassName('sample-content')[0]
                     .textContent
             );
 
-            const msg = icon.parentElement.getElementsByClassName('sample__copy-msg')[0];
+            const msg = icon.parentElement.getElementsByClassName('sample-copy-msg')[0];
 
             // Unhide "Copied!" text
             msg.style.opacity = 2;

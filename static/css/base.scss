@@ -1,9 +1,19 @@
-@use 'theme';
+@font-face {
+    font-family: 'Roboto Mono';
+    font-weight: 400;
+    src: url('../../fonts/roboto-mono/RobotoMono-Regular.ttf') format('truetype');
+}
 
 @font-face {
-    font-family: 'Source Sans Pro';
+    font-family: 'Roboto Mono';
+    font-weight: 700;
+    src: url('../../fonts/roboto-mono/RobotoMono-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Ubuntu Mono';
     font-weight: 400;
-    src: url('../fonts/source-sans-pro/SourceSansPro-Regular.ttf') format('truetype');
+    src: url('../../fonts/ubuntu-mono/UbuntuMono-Regular.ttf') format('truetype');
 }
 
 * {
@@ -14,17 +24,20 @@
 
 body {
     align-items: center;
-    background-color: theme.$bg;
-    color: theme.$fg;
+    background-color: var(--theme-bg);
+    color: var(--theme-fg);
     display: flex;
     flex-direction: column;
-    font-family: 'Source Sans Pro';
+    font-family: 'Roboto Mono';
+    font-weight: 400;
+    font-size: 15px;
     min-height: 100vh;
 }
 
 header {
-    background-color: theme.$bg;
-    border-bottom: solid 3px theme.$tertiary;
+    background-color: var(--theme-bg);
+    border-bottom: solid 3px var(--theme-tertiary);
+    font-family: 'Ubuntu Mono';
     position: sticky;
     top: 0;
     width: 100%;
@@ -38,37 +51,8 @@ main, .nav-bar {
 }
 
 main {
-    margin: 2rem auto;
+    margin: 40px auto;
     width: 80%;
-}
-
-table {
-    border-collapse: collapse;
-    color: theme.$fg;
-
-    td, th {
-        padding: .8em 1em;
-        text-align: left;
-        font-size: 1rem;
-    }
-
-    th {
-        background-color: theme.$tertiary;
-        color: theme.$bg;
-    }
-
-    /* https://stackoverflow.com/a/47318412 */
-    th:first-of-type { border-top-left-radius: 10px; }
-    th:last-of-type { border-top-right-radius: 10px; }
-    tr:last-of-type > td:first-of-type { border-bottom-left-radius: 10px; }
-    tr:last-of-type > td:last-of-type { border-bottom-right-radius: 10px; }
-
-    tr:hover > td {
-        filter: contrast(80%);
-    }
-
-    tr:nth-child(odd)  > td { background-color: theme.$bg; }
-    tr:nth-child(even) > td { background-color: theme.$td-row; }
 }
 
 .nav-bar {
@@ -77,43 +61,61 @@ table {
     overflow-x: hidden;
     position: sticky;
     top: 0;
+
     /* Set the `z-index` sufficiently large to prevent it from overlaying with other elements. */
     z-index: 42;
 
-    &__avatar {
-        margin-right: .5rem;
-        width: 1.5rem;
-        height: 1.5rem;
+    .user-avatar {
+        height: 30px;
+        margin-right: 8px;
+        width: 30px;
     }
 
-    &__button {
-        color: theme.$fg;
+    a {
+        color: var(--theme-fg);
         display: flex;
-        font-size: 1.2rem;
-        padding: .8em 1.2em;
+        font-size: 18px;
+        padding: 16px 20px;
         text-decoration: none;
         align-items: center;
         transition: .3s;
 
+        &:hover {
+            color: var(--theme-tertiary);
+        }
+    }
+
+    .nav-link {
         &--active {
-            color: theme.$tertiary;
-        }
-
-        &--icon {
-            font-size: 1.5rem;
-        }
-
-        &:hover:not(&--active) {
-            color: mix(theme.$fg, theme.$tertiary, 30%);
+            color: var(--theme-tertiary);
         }
     }
 
-    &__icon {
-        font-size: .8em;
-        margin-right: .3em;
+    i {
+        padding: 0 8px;
     }
 
-    &__left, &__right {
+    .login-icon {
+        font-size: 28px;
+    }
+
+    .nav-bar-left, .nav-bar-right {
         display: flex;
     }
 }
+
+.status-box {
+    color: var(--theme-fg);
+    border-radius: 8px;
+    font-weight: bold;
+    padding: 1px 8px;
+}
+
+.status-AC { background-color: var(--theme-AC); }
+.status-WA { background-color: var(--theme-WA); }
+.status-MLE { background-color: var(--theme-MLE); }
+.status-TLE { background-color: var(--theme-TLE); }
+.status-NZE { background-color: var(--theme-NZE); }
+.status-RE { background-color: var(--theme-RE); }
+.status-CE { background-color: var(--theme-CE); }
+.status-IE { background-color: var(--theme-IE); }

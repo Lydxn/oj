@@ -1,0 +1,59 @@
+{% load customtags %}
+
+<h2 class="ruled-header">Most Recent Submission</h2>
+
+{% if submission %}
+    {% if submission.status == 'IE' %}
+    <span class="internal-error">
+        Internal Error! If you think this is a bug, please report it.
+    <span>
+    {% elif submission.status == 'CE' %}
+    <textarea class="compile-error-box" spellcheck="false">
+    {{ submission.error }}
+    </textarea>
+    {% else %}
+    <table class="feedback">
+        <thead>
+            <tr>
+                <th class="case-num">Case</th>
+                <th class="case-status">Status</th>
+                <th class="case-input">Input</th>
+                <th class="case-output">Output</th>
+                <th class="case-time">Time</th>
+                <th class="case-memory">Memory</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for case in test_cases %}
+            <tr>
+                <td class="case-num">#{{ case.num }}</td>
+                <td class="case-status">
+                    <span class="status-box status-{{ case.status }}">
+                        {{ case.status }}
+                    </span>
+                </td>
+                <td class="case-input">{{ case.input }}</td>
+                <td class="case-output">{{ case.output }}</td>
+                <td class="case-time">
+                    {% if case.time %}
+                        {{ case.time_fmt }}
+                    {% else %}
+                        >{{ submission.problem.time_limit|time_fmt }}
+                    {% endif %}
+                </td>
+                <td class="case-memory">
+                    {% if case.memory %}
+                        {{ case.memory|memory_fmt }}
+                    {% else %}
+                        >{{ submission.problem.time_limit|memory_fmt }}
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </div>
+    {% endif %}
+    {% if submission.finished %}
+    <div id="done">
+    {% endif %}
+{% endif %}

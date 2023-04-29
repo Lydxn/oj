@@ -1,5 +1,7 @@
 from django.contrib.auth.models import AbstractUser
-from django.db import models
+
+# Add ManyToManyField for "internet points"
+# Update User page with stats as well as the leaderboard
 
 class User(AbstractUser):
    def __str__(self):

@@ -1,36 +1,72 @@
-@use 'theme';
-
-@font-face {
-    font-family: 'Ubuntu';
-    font-weight: 400;
-    src: url('../fonts/ubuntu/Ubuntu-Regular.ttf') format('truetype');
-}
-
-@font-face {
-    font-family: 'Ubuntu Mono';
-    font-weight: 400;
-    src: url('../fonts/ubuntu-mono/UbuntuMono-Regular.ttf') format('truetype');
-}
-
 @mixin ruled-header {
-    border-bottom: 1px solid theme.$fg;
+    border-bottom: 1px solid var(--theme-fg);
     content: ' ';
     display: block;
-    margin: 1.5rem 0 1rem;
-    padding-bottom: .2em;
+    margin: 20px 0 20px;
+    padding-bottom: 6px;
+}
+
+.compile-error-box {
+    background-color: var(--theme-bg);
+    border: none;
+    color: var(--theme-fg);
+    font-family: 'Roboto Mono';
+    font-size: 15px;
+    height: 200px;
+    resize: none;
+    width: 100%;
+}
+
+.feedback {
+    border: solid 2px var(--theme-fg);
+    border-radius: 10px;
+    border-spacing: 0;
+    font-family: 'Ubuntu Mono';
+    margin: auto;
+    width: 90%;
+
+    td, th {
+        font-size: 16px;
+        padding: 10px 12px;
+        text-align: center;
+    }
+
+    td {
+        border-top: solid 1px var(--theme-fg);
+    }
+
+    td:not(:first-child), th:not(:first-child) {
+        border-left: solid 1px var(--theme-fg);
+    }
+
+    .case-num {
+        font-weight: bold;
+    }
+}
+
+.internal-error {
+    color: red;
+    font-family: 'Ubuntu Mono';
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.container {
+    margin: auto;
+    max-width: 1000px;
 }
 
 .problem-header {
     @include ruled-header;
 
-    margin-bottom: 1.5rem;
+    margin-bottom: 20px;
     position: relative;
 
-    &__title {
+    .title {
         text-align: center;
     }
 
-    &__limits {
+    .limits {
         position: absolute;
         right: 0;
         top: 0;
@@ -39,14 +75,12 @@
 
 .martor {
     code {
-        color: theme.$code-inline-fg;
-        font-family: 'Ubuntu Mono';
-        margin: .2rem;
+        color: var(--theme-code-inline);
+        font-weight: bold;
     }
 
     h1, h2 {
         @include ruled-header;
-        font-family: 'Ubuntu';
     }
 
     ul {
@@ -57,78 +91,113 @@
         display: flex;
         justify-content: space-around;
 
-        &__box {
-            background-color: theme.$code-bg;
-            border: 1px solid theme.$code-border;
+        .sample-box {
+            border: 1px solid var(--theme-border2);
             border-radius: 3px;
             flex-grow: 1;
-            margin: 1rem;
-            padding: .5em;
+            margin: 10px;
+            padding: 8px;
+        }
 
-            &--input {
-                border-left: 3px solid theme.$input;
+        .sample-input {
+            border-left: 3px solid var(--theme-sample1);
 
-                > .sample__header {
-                    border-bottom: 1px solid theme.$input;
-                }
-
-                &:hover {
-                    background-color: mix(theme.$code-bg, theme.$input, 90%);
-                }
+            > .sample-header {
+                border-bottom: 1px solid var(--theme-sample1);
             }
 
-            &--output {
-                border-left: 3px solid theme.$output;
-
-                > .sample__header {
-                    border-bottom: 1px solid theme.$output;
-                }
-
-                &:hover {
-                    background-color: mix(theme.$code-bg, theme.$output, 90%);
-                }
+            &:hover {
+                background-color: color-mix(in srgb, var(--theme-bg) 90%, var(--theme-sample1));
             }
         }
 
-        &__content {
-            color: theme.$code-fg;
+        .sample-output {
+            border-left: 3px solid var(--theme-sample2);
+
+            > .sample-header {
+                border-bottom: 1px solid var(--theme-sample2);
+            }
+
+            &:hover {
+                background-color: color-mix(in srgb, var(--theme-bg) 90%, var(--theme-sample2));
+            }
+        }
+
+        .sample-content {
             font-family: 'Ubuntu Mono';
         }
 
-        &__copy {
+        .sample-copy {
             align-items: center;
             display: inline-flex;
             float: right;
             margin-left: auto;
         }
 
-        &__copy-msg {
-            color: theme.$fg;
-            font-size: .8rem;
-            margin: 0 .5rem;
+        .sample-copy-msg {
+            font-size: 12px;
+            margin: 0 8px;
             opacity: 0;
         }
 
-        &__header {
-            display: flex;
-            margin-bottom: .5rem;
-            padding-bottom: .5rem;
-        }
-
-        &__copy-icon {
-            fill: theme.$fg;
-            height: 1rem;
-            width: 1rem;
+        .sample-copy-icon {
+            height: 16px;
+            width: 16px;
 
             &:hover {
                 cursor: pointer;
             }
         }
 
-        &__title {
-            color: theme.$fg;
-            font-family: 'Ubuntu';
-            font-weight: 600;
+        .sample-header {
+            display: flex;
+            margin-bottom: 8px;
+            padding-bottom: 8px;
         }
+
+        .sample-title {
+            font-family: 'Roboto Mono';
+            font-weight: bold;
+        }
+    }
+}
+
+.ruled-header {
+    @include ruled-header;
+}
+
+.submit {
+    font-size: 16px;
+    margin: 50px 0;
+
+    .submit-button {
+        border: dashed 2px var(--theme-tertiary);
+        background-color: var(--theme-bg);
+        color: var(--theme-fg);
+        font-family: 'Roboto Mono';
+        font-size: 16px;
+        padding: 5px 20px;
+    }
+
+    .submit-button:hover {
+        border: solid 2px var(--theme-tertiary);
+        cursor: pointer;
+    }
+
+    .submit-header {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .submit-language {
+        background-color: var(--theme-bg);
+        color: white;
+        font-family: 'Roboto Mono';
+        font-size: 16px;
+    }
+
+    &__language-select {
+        background-color: var(--theme-bg);
     }
 }

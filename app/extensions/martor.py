@@ -3,9 +3,8 @@ from markdown.extensions import Extension
 from markdown.extensions.fenced_code import FencedBlockPreprocessor
 from textwrap import dedent
 
-from oj.settings import STATIC_URL
-
 import re
+
 
 class SampleIOPreprocessor(FencedBlockPreprocessor):
     FENCED_BLOCK_RE = re.compile(
@@ -33,13 +32,13 @@ class SampleIOPreprocessor(FencedBlockPreprocessor):
             with sample:
                 for type in 'input', 'output':
                     content = self._escape(m.group(type))
-                    with div(cls=f'sample__box sample__box--{type}'):
-                        with div(cls='sample__header'):
-                            span(f'Sample {type.capitalize()} {idx}', cls='sample__title')
-                            with span(cls='sample__copy'):
-                                span('Copied!', cls='sample__copy-msg')
-                                i(cls='sample__copy-icon fa-regular fa-copy')
-                        pre(content, cls='sample__content')
+                    with div(cls=f'sample-box sample-{type}'):
+                        with div(cls='sample-header'):
+                            span(f'Sample {type.capitalize()} {idx}', cls='sample-title')
+                            with span(cls='sample-copy'):
+                                span('Copied!', cls='sample-copy-msg')
+                                i(cls='sample-copy-icon fa-regular fa-copy')
+                        pre(content, cls='sample-content')
 
             code = sample.render()
             placeholder = self.md.htmlStash.store(code)
@@ -49,10 +48,12 @@ class SampleIOPreprocessor(FencedBlockPreprocessor):
 
         return text.split('\n')
 
+
 class SampleIOExtension(Extension):
     def extendMarkdown(self, md, md_globals):
         md.registerExtension(self)
         md.preprocessors.register(SampleIOPreprocessor(md, self.getConfigs()), 'sample_io', 30)
+
 
 def makeExtension(**kwargs):
     return SampleIOExtension(**kwargs)

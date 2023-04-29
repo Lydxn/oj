@@ -1,0 +1,6 @@
+*.py[cdo]
+
+node_modules/
+__pycache__/
+build/
+dist/

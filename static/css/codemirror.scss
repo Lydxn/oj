@@ -1,0 +1,10 @@
+.cm-editor {
+    background-color: var(--theme-editor);
+    border: solid 2px var(--theme-border1);
+    height: 300px;
+    margin: 5px 0;
+}
+
+.cm-gutter {
+    background-color: var(--theme-border1);
+}

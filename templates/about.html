@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}About{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'dist/css/about.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Frequently Asked Questions</h1>
+
+    <section>
+        <h2>Who created this website?</h2>
+        <p>
+            It was created by <a href="https://github.com/Lydxn">Lyndon Ho</a> for a Grade 12 final project.
+        </p>
+    </section>
+
+    <section>
+        <h2>What is this website?</h2>
+        <p>
+            This is a programming website designed to help both novice and experienced programmers improve their coding skills!
+            The idea for this site was inspired by <a href="https://codingbat.com">CodingBat</a> and <a href="https://dmoj.ca/">DMOJ</a>.
+            Right now it is under beta development, and will see more cool awesome features in the near future!
+        </p>
+    </section>
+
+    <section>
+        <h2>How do I use this website?</h2>
+        <p>
+            Click on the <b>Problemset</b> at the top of this page, and select one of the problems from the list that are available.
+            Each problem will contain a problem statement that you can solve and earn <i>internet points</i> for!
+        </p>
+    </section>
+
+    <section>
+        <h2>What do the statuses mean?</h2>
+        <p>
+            The status for a given submission or test case can mean one of the following things:
+            <ul>
+                <li>
+                    <span class="status-box status-AC">AC</span>
+                    <b>- Accepted</b>
+                    (Solution is correct!)
+                </li>
+                <li>
+                    <span class="status-box status-WA">WA</span>
+                    <b>- Wrong Answer</b>
+                    (Solution is not correct)
+                </li>
+                <li>
+                    <span class="status-box status-MLE">MLE</span>
+                    <b>- Memory Limit Exceeded</b>
+                    (Solution used up too much memory)
+                </li>
+                <li>
+                    <span class="status-box status-TLE">TLE</span>
+                    <b>- Time Limit Exceeded</b>
+                    (Solution took too long to run)
+                </li>
+                <li>
+                    <span class="status-box status-NZE">NZE</span>
+                    <b>- Non Zero Exit</b>
+                    (Solution terminated with a non-zero exit code)
+                </li>
+                <li>
+                    <span class="status-box status-RE">RE</span>
+                    <b>- Runtime Error</b>
+                    (Solution terminated with a signal)
+                </li>
+                <li>
+                    <span class="status-box status-CE">CE</span>
+                    <b>- Compile Error</b>
+                    (Solution did not compile)
+                </li>
+                <li>
+                    <span class="status-box status-IE">IE</span>
+                    <b>- Internal Error</b>
+                    (An internal error occurred while judging)
+                </li>
+            </ul>
+        </p>
+    </section>
+</div>
+{% endblock %}

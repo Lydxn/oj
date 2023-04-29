@@ -1,29 +1,69 @@
-@use 'theme';
-
-$link-color: theme.$tertiary;
-$link-hover-color: theme.$fg;
-
 .pset-table {
-    float: left;
-    margin-top: 8rem;
-    width: 70%;
+    border: solid 2px var(--theme-fg);
+    border-spacing: 0;
+    border-radius: 10px;
+    color: var(--theme-fg);
+    font-size: 15px;
+    margin: 5px auto;
+    overflow: hidden;
 
-    &__item-name {
+    td, th {
+        padding: 8px 20px;
+    }
+
+    td {
+        border-top: solid 1px var(--theme-fg);
+    }
+
+    td:not(:first-child), th:not(:first-child) {
+        border-left: solid 1px var(--theme-fg);
+    }
+
+    tr:nth-child(even) > td { background-color: var(--theme-table-row1); }
+    tr:nth-child(odd) > td { background-color: var(--theme-table-row2); }
+
+    .diff-bar-container {
+        border-radius: 5px;
+        background-color: var(--theme-diff-bg);
+        height: 14px;
+        overflow: hidden;
+        position: relative;
+        text-align: left;
+        width: 100px;
+    }
+
+    .diff-bar {
+        height: 100%;
+        width: 50%;
+        position: absolute;
+    }
+
+    .pset-name {
+        text-align: left;
+        font-size: 15px;
         width: 100%;
 
         a {
-            color: $link-color;
-            font-weight: bold;
+            color: var(--theme-fg);
             text-decoration: none;
 
             &:hover {
-                color: $link-hover-color;
                 text-decoration: underline;
             }
         }
     }
 
-    &__item-tags {
-        padding-right: 2rem;
+    .pset-solves {
+        text-align: center;
+        font-size: 14px;
+        white-space: nowrap;
     }
+}
+
+.pset-table-container {
+    padding: 40px 0;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 900px;
+    text-align: center;
 }

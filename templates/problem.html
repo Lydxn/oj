@@ -41,31 +41,29 @@
 {% endblock %}
 
 {% block content %}
-<div class="container">
-    <div class="problem-header">
-        <h1 class="title">{{ problem }}</h1>
-        <div class="limits">
-            <div class="time-limit">
-                <b>Time:</b> {{ problem.time_limit|time_fmt }}
-            </div>
-            <div class="memory-limit">
-                <b>Memory:</b> {{ problem.memory_limit|memory_fmt }}
-            </div>
+<div class="problem-header ruled-header">
+    <h1 class="title">{{ problem }}</h1>
+    <div class="limits">
+        <div class="time-limit">
+            <b>Time:</b> {{ problem.time_limit|time_fmt }}
+        </div>
+        <div class="memory-limit">
+            <b>Memory:</b> {{ problem.memory_limit|memory_fmt }}
         </div>
     </div>
-    <div class="martor">
-        {{ problem.statement|safe_markdown }}
+</div>
+<div class="martor">
+    {{ problem.statement|safe_markdown }}
+</div>
+<form class="submit" method="post">
+    {% csrf_token %}
+    <div class="submit-header">
+        {{ form.language }}
+        <input class="submit-button" type="submit" value="Submit Code">
     </div>
-    <form class="submit" method="post">
-        {% csrf_token %}
-        <div class="submit-header">
-            {{ form.language }}
-            <input class="submit-button" type="submit" value="Submit Code">
-        </div>
-        {{ form.source }}
-    </form>
-    <div class="test-cases">
-    {% include 'submission.html' %}
-    </div>
+    {{ form.source }}
+</form>
+<div class="test-cases">
+{% include 'submission.html' %}
 </div>
 {% endblock %}

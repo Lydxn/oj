@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Problemsets{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'dist/css/problemsets.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="category-grid">
+    {% for category in problem_categories %}
+    <a href="/problemset/{{ category.code }}">
+        <div class="category">
+            <!-- TODO: It would be a lot clearer semantically to use the `header` and `footer` tags. -->
+            <div class="category-header ruled-header">
+                <p class="category-title">{{ category }}</p>
+            </div>
+            <div class="category-desc">
+                {{ category.description }}
+            </div>
+            <div class="category-footer">
+                {{ category.num_solved }}/{{ category.num_problems }}
+            </div>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+{% endblock %}

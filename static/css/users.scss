@@ -1,0 +1,18 @@
+.user-table {
+    font-size: 15px;
+    margin: 5px auto;
+    text-align: center;
+    width: 100%;
+
+    td, th {
+        padding: 8px 20px;
+    }
+
+    tr:nth-child(even) > td { background-color: var(--theme-table-row1); }
+    tr:nth-child(odd) > td { background-color: var(--theme-table-row2); }
+
+    .user-name {
+        text-align: left;
+        width: 100%;
+    }
+}

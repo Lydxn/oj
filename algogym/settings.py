@@ -4,7 +4,7 @@ from pathlib import Path
 """Site configuration"""
 
 # Access token for authenticating the judge (keep this secret!)
-JUDGE_ACCESS_TOKEN = None
+JUDGE_ACCESS_TOKEN = 'gStYfO3MOFRpLvM3XuZvbYKEgtRojgdEUCXQgOCTC98'
 JUDGE_ADDRESS = ('127.0.0.1', 1337)
 
 """Django confinguration"""
@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
+    'django.contrib.humanize',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
@@ -97,7 +98,7 @@ DATABASES = {
         'NAME': 'oj',
         'USER': 'postgres',
         'PASSWORD': 'oricsenpai2357',
-        'HOST': 'winhost',
+        'HOST': '127.0.0.1',
         'PORT': '5432'
     }
 }
@@ -136,6 +137,7 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static'
 ]
 STATIC_URL = '/static/'
+STATIC_ROOT = None
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

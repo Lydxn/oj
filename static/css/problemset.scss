@@ -1,22 +1,10 @@
 .pset-table {
-    border: solid 2px var(--theme-fg);
-    border-spacing: 0;
-    border-radius: 10px;
-    color: var(--theme-fg);
     font-size: 15px;
     margin: 5px auto;
-    overflow: hidden;
+    width: 100%;
 
     td, th {
         padding: 8px 20px;
-    }
-
-    td {
-        border-top: solid 1px var(--theme-fg);
-    }
-
-    td:not(:first-child), th:not(:first-child) {
-        border-left: solid 1px var(--theme-fg);
     }
 
     tr:nth-child(even) > td { background-color: var(--theme-table-row1); }
@@ -58,12 +46,4 @@
         font-size: 14px;
         white-space: nowrap;
     }
-}
-
-.pset-table-container {
-    padding: 40px 0;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 900px;
-    text-align: center;
 }

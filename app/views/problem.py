@@ -24,10 +24,10 @@ class ProblemDetailView(FormMixin, DetailView):
     template_name = 'problem.html'
     model = Problem
     form_class = SubmissionForm
-
     context_object_name = 'problem'
+    
     slug_field = 'code'
-    slug_url_kwarg = 'code'
+    slug_url_kwarg = 'problem'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

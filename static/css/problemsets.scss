@@ -1,0 +1,41 @@
+.category-grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    margin: 5px 10px;
+
+    /* Get rid of the default <a> styling.*/
+    a { all: unset; }
+
+    .category {
+        cursor: pointer;
+        border: solid 2px var(--theme-fg);
+        font-weight: normal;
+        height: 100px;
+        padding: 5px 10px;
+        transition: .2s;
+
+        &:hover {
+            transform: translateY(-5px);
+        }
+    }
+
+    .category-desc {
+        font-size: 12px;
+        margin: 10px 0;
+    }
+
+    .category-header {
+        margin: 0;
+    }
+
+    .category-footer {
+        font-size: 14px;
+        text-align: right;
+    }
+
+    .category-title {
+        font-size: 20px;
+        font-weight: bold;
+    }
+}

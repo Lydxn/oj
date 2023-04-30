@@ -1,8 +1,8 @@
 {% load customtags %}
 
-<h2 class="ruled-header">Most Recent Submission</h2>
-
 {% if submission %}
+    <h2 class="ruled-header">Most Recent Submission</h2>
+
     {% if submission.status == 'IE' %}
     <span class="internal-error">
         Internal Error! If you think this is a bug, please report it.

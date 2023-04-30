@@ -1,5 +1,4 @@
 {% load static %}
-
 {% load socialaccount %}
 
 <!DOCTYPE html>
@@ -18,15 +17,15 @@
     </head>
     <body>
         <header>
-            <nav class="nav-bar">
+            <nav>
                 <div class="nav-bar-left">
                     <a class="nav-link" href="/">
                         <i class="fa-solid fa-house"></i>
                         Home
                     </a>
-                    <a class="nav-link" href="/problemset/">
+                    <a class="nav-link" href="/problemsets/">
                         <i class="fa-solid fa-book"></i>
-                        Problemset
+                        Problemsets
                     </a>
                     <a class="nav-link" href="/users/">
                         <i class="fa-solid fa-user"></i>
@@ -39,9 +38,9 @@
                         About
                     </a>
                     {% if user.is_authenticated %}
-                    <a class="nav-link" href="/profile/">
+                    <a class="nav-link" href="/user/{{ user }}">
                         <img class="user-avatar" src="//avatars.githubusercontent.com/{{ user }}">
-                        <b>{{ user }}</b>
+                        {{ user }}
                     </a>
                     <a class="login-icon" href="{% url 'account_logout' %}">
                         <i class="fa-solid fa-right-from-bracket login-icon"></i>
@@ -55,7 +54,7 @@
             </nav>
         </header>
         <main>
-            {% block content %}{% endblock %}
+        {% block content %}{% endblock %}
         </main>
     </body>
 </html>

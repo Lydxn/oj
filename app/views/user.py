@@ -1,10 +1,35 @@
-from django.views.generic import ListView
+from django.views.generic import DetailView, ListView
 
-from app.models import User
+from app.models import Submission, User
+
+
+class UserView(DetailView):
+    template_name = 'user.html'
+    model = User
+    context_object_name = 'user'
+
+    slug_field = 'username'
+    slug_url_kwarg = 'user'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        ac_submissions = Submission.objects.filter(user=self.object, status='AC')
+        context['num_problems_solved'] = ac_submissions.values('problem').distinct().count()
+
+        return context
 
 
 class UserListView(ListView):
     template_name = 'users.html'
-
     model = User
     context_object_name = 'users'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        for user in context['users']:
+            ac_submissions = Submission.objects.filter(user=user, status='AC')
+            user.num_solved = ac_submissions.values('problem').distinct().count()
+
+        return context

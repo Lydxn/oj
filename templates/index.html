@@ -1,10 +1,62 @@
 {% extends "base.html" %}
 
+{% load static %}
+
+{% load socialaccount %}
+
 {% block title %}Home{% endblock %}
 
-{% block content %}
-<p style="font-size:2rem;">
-Welcome to <b>AlgoGym</b>!
-</p>
+{% block css %}
+<link rel="stylesheet" href="{% static 'dist/css/index.css' %}">
+{% endblock %}
 
+{% block content %}
+<p class="greeting">
+    Welcome to <b>AlgoGym</b>!
+</p>
+{% if not user.is_authenticated %}
+<p>
+    New here? <a href="{% provider_login_url 'github' %}">Log in</a> with Github to get started.
+</p>
+{% endif %}
+<p>
+    Solve coding challenges and improve your coding skills.
+</p>
+<div class="recent-container">
+    <h2>Submitter's Wall of Fame</h2>
+    <table class="recent-submissions">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>User</th>
+                <th>Problem</th>
+                <th>Status</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for submission in recent_submissions %}
+            <tr>
+                <td>{{ submission.id }}</td>
+                <td>
+                    <a href="/user/{{ submission.user }}">
+                        {{ submission.user }}
+                    </a>
+                </td>
+                <td>
+                    <a href="/problem/{{ submission.problem.code }}">
+                        {{ submission.problem }}
+                    </a>
+                </td>
+                <td>
+                    <span class="status-box status-{{ submission.status }}">
+                        {{ submission.status }}
+                    </span>
+                </td>
+                <td>{{ submission.submitted|date:'Y/m/d h:m:s' }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}

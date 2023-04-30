@@ -6,14 +6,7 @@ from app.models.user import User
 
 class ProblemCategory(models.Model):
     name = models.CharField(max_length=20, unique=True)
-    description = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.name
-
-
-class ProblemTag(models.Model):
-    name = models.CharField(max_length=20, unique=True)
+    code = models.CharField(max_length=30, unique=True)
     description = models.CharField(max_length=100)
 
     def __str__(self):
@@ -39,6 +32,7 @@ class Problem(models.Model):
 
         self.num_attempts = submissions.values('user').distinct().count()
         self.num_solves = ac_submissions.values('user').distinct().count()
+
         self.save()
 
     @property

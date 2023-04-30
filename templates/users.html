@@ -1,14 +1,32 @@
 {% extends "base.html" %}
 
-{% block title %}Home{% endblock %}
+{% load static %}
+{% load humanize %}
+
+{% block title %}Users{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'dist/css/users.css' %}">
+{% endblock %}
 
 {% block content %}
-    <h1>Users</h1>
-    <ol>
+<h1 class="ruled-header">All Users</h1>
+<table class="user-table">
+    <thead>
+        <th class="user-rank">#</th>
+        <th class="user-name">User</th>
+        <th class="user-solves">Solved</th>
+    </thead>
+    <tbody>
         {% for user in users %}
-            <li>{{ user }} - {{ user.date_joined }}</li>
-        {% empty %}
-            <li>No users.</li>
+        <tr>
+            <td class="user-rank">{{ forloop.counter|ordinal }}</td>
+            <td class="user-name">
+                <a href="/user/{{ user }}">{{ user }}</a>
+            </td>
+            <td class="user-solves">{{ user.num_solved }}</td>
+        </tr>
         {% endfor %}
-    </ol>
+    </tbody>
+</table>
 {% endblock %}

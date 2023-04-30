@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}{{ user }}{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'dist/css/user.css' %}">
+{% endblock %}
+
+{% block content %}
+<h1 class="ruled-header">User Profile</h1>
+<div class="user-info">
+    <div class="user-frame">
+        <img class="user-avatar" src="//avatars.githubusercontent.com/{{ user }}">
+    </div>
+    <div class="user-name">
+        {{ user }}
+    </div>
+    <div class="user-solved">
+        <b>{{ num_problems_solved }}</b> problem{{ num_solved|pluralize }} solved.
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,27 @@
+main {
+    text-align: center;
+}
+
+p {
+    font-size: 16px;
+    margin: 5px;
+}
+
+.greeting {
+    font-size: 30px;
+    margin: 20px auto;
+}
+
+.recent-submissions {
+    margin: 10px auto;
+    width: 100%;
+
+    th, td {
+        padding: 8px 10px;
+    }
+}
+
+.recent-container {
+    margin: 100px auto;
+    padding: 10px 20px;
+}

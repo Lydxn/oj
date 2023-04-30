@@ -13,41 +13,39 @@
 {% endblock %}
 
 {% block content %}
-<div class="pset-table-container">
-    <h2>All Problems</h2>
-    <table class="pset-table">
-        <thead>
-            <th class="pset-name">Name</th>
-            <th class="pset-difficulty">Difficulty</th>
-            <th class="pset-solves">Solves</th>
-            <th class="pset-status">AC?</th>
-        </thead>
-        <tbody>
-            {% for problem in problemset %}
-            <tr>
-                <td class="pset-name">
-                    <a href="../problem/{{ problem.code }}/">{{ problem.name }}</a>
-                </td>
-                <td class="pset-diff">
-                    <div class="diff-bar-container">
-                        <span class="diff-bar" difficulty="{{ problem.difficulty }}"></span>
-                    </div>
-                </td>
-                <td class="pset-solves">
-                    {{ problem.num_solves }} / {{ problem.num_attempts }}
-                </td>
-                <td class="pset-status">
-                    {% if problem.submitted %}
-                        {% if problem.solved %}
-                            ✅
-                        {% else %}
-                            ❌
-                        {% endif %}
+<h1 class="ruled-header">{{ problem_category }}</h1>
+<table class="pset-table">
+    <thead>
+        <th class="pset-name">Name</th>
+        <th class="pset-difficulty">Difficulty</th>
+        <th class="pset-solves">Solves</th>
+        <th class="pset-status">AC?</th>
+    </thead>
+    <tbody>
+        {% for problem in problemset %}
+        <tr>
+            <td class="pset-name">
+                <a href="../problem/{{ problem.code }}/">{{ problem.name }}</a>
+            </td>
+            <td class="pset-diff">
+                <div class="diff-bar-container">
+                    <span class="diff-bar" difficulty="{{ problem.difficulty }}"></span>
+                </div>
+            </td>
+            <td class="pset-solves">
+                {{ problem.num_solves }} / {{ problem.num_attempts }}
+            </td>
+            <td class="pset-status">
+                {% if problem.submitted %}
+                    {% if problem.solved %}
+                        ✅
+                    {% else %}
+                        ❌
                     {% endif %}
-                </td>
-            {% endfor %}
-            </tr>
-        </tbody>
-    </table>
-</div>
+                {% endif %}
+            </td>
+        {% endfor %}
+        </tr>
+    </tbody>
+</table>
 {% endblock %}

@@ -41,11 +41,15 @@ class ProblemCategoryView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        ac_submissions = Submission.objects.filter(user=self.request.user, status='AC')
+        if self.request.user.is_authenticated:
+            ac_submissions = Submission.objects.filter(user=self.request.user, status='AC')
 
-        for category in context['problem_categories']:
-            category.num_problems = Problem.objects.filter(category=category).count()
-            category.num_solved = ac_submissions.filter(problem__category=category) \
-                                                .values('problem').distinct().count()
+            for category in context['problem_categories']:
+                category.num_problems = Problem.objects.filter(category=category).count()
+                category.num_solved = ac_submissions.filter(problem__category=category) \
+                                                    .values('problem').distinct().count()
+        else:
+            for category in context['problem_categories']:
+                category.num_problems = category.num_solved = 0
 
         return context

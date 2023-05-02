@@ -5,7 +5,7 @@ from app.views.index import IndexView
 from app.views.misc import AboutView
 from app.views.problem import ProblemDetailView, SubmissionView
 from app.views.problemset import ProblemCategoryView, ProblemsetView
-from app.views.user import UserView, UserListView
+from app.views.user import UserProfileView, UserListView
 
 
 urlpatterns = [
@@ -15,6 +15,6 @@ urlpatterns = [
     path('problemset/<str:problemset>', ProblemsetView.as_view(), name='problemset'),
     path('problemsets/', ProblemCategoryView.as_view(), name='problemsets'),
     path('submission/<int:pk>/', SubmissionView.as_view(), name='submission'),
-    path('user/<str:user>', UserView.as_view(), name='user'),
+    path('profile/<str:profile>', UserProfileView.as_view(), name='profile'),
     path('users/', UserListView.as_view(), name='users')
 ]

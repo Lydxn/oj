@@ -8,10 +8,8 @@
         Internal Error! If you think this is a bug, please report it.
     <span>
     {% elif submission.status == 'CE' %}
-    <textarea class="compile-error-box" spellcheck="false">
-    {{ submission.error }}
-    </textarea>
-    {% else %}
+    <textarea class="compile-error-box" readonly spellcheck="false">{{ submission.error }}</textarea>
+    {% elif submission.status != 'Q' and submission.status != 'J' %}
     <table class="feedback">
         <thead>
             <tr>

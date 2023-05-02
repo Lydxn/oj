@@ -10,7 +10,7 @@ class ProblemsetView(ListView):
     slug_field = 'code'
     slug_url_kwarg = 'problemset'
 
-    ordering = ['id']
+    ordering = ('id',)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -36,7 +36,7 @@ class ProblemCategoryView(ListView):
     model = ProblemCategory
     context_object_name = 'problem_categories'
 
-    ordering = ['id']
+    ordering = ('id',)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

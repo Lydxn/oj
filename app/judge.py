@@ -5,10 +5,6 @@ import socket
 import struct
 
 
-class ClientError(Exception):
-    pass
-
-
 class JudgeClient:
     def __init__(self, address):
         self.address = address
@@ -38,7 +34,7 @@ class JudgeClient:
         while True:
             data = self.read_data()
             if data is None:
-                raise ClientError('Failed to read data from judge server.\n')
+                raise socket.error('Failed to read data from judge server.\n')
 
             yield data
 

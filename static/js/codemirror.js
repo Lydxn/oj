@@ -8,12 +8,14 @@ import { EditorView, keymap, lineNumbers } from '@codemirror/view';
 import { oneDarkTheme, oneDarkHighlightStyle } from '@codemirror/theme-one-dark';
 
 import { cpp } from '@codemirror/lang-cpp';
+import { java } from '@codemirror/lang-java';
 import { pythonLanguage } from '@codemirror/lang-python';
 import { ruby } from '@codemirror/legacy-modes/mode/ruby';
 
 const langHighlights = {
     'C': cpp(),
     'C++': cpp(),
+    'Java': java(),
     'Python 3': new LanguageSupport(pythonLanguage),
     'Ruby': StreamLanguage.define(ruby)
 };
@@ -38,7 +40,7 @@ const langHighlights = {
                         ...historyKeymap,
                         { key: 'Tab', run: insertTab }
                     ]),
-                    langCompartment.of(langHighlights[lang])
+                    langCompartment.of(langHighlights[lang] || [])
                 ]
             })
         });

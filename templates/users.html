@@ -22,9 +22,9 @@
         <tr>
             <td class="user-rank">{{ forloop.counter|ordinal }}</td>
             <td class="user-name">
-                <a href="/user/{{ user }}">{{ user }}</a>
+                <a href="/profile/{{ user }}">{{ user }}</a>
             </td>
-            <td class="user-solves">{{ user.num_solved }}</td>
+            <td class="user-solves">{{ user.num_problems_solved }}</td>
         </tr>
         {% endfor %}
     </tbody>

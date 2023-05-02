@@ -7,6 +7,9 @@ from app.models.language import Language
 from app.models.problem import Problem
 from app.models.user import User
 
+import socket
+import traceback
+
 
 class Status(models.TextChoices):
     J = 'J', 'Judging'
@@ -48,13 +51,20 @@ class Submission(models.Model):
         self.status_priority = ('J', 'Q', 'AC', 'WA', 'MLE', 'TLE', 'NZE', 'RE', 'CE', 'IE').index
 
     def judge(self):
-        with JudgeClient(settings.JUDGE_ADDRESS) as client:
-            for data in client.submit(self):
-                try:
-                    header = data['header']
-                    self.HANDLERS[header](data)
-                except KeyError:
-                    raise Exception(f'Judge gave an unknown header: {data}')
+        try:
+            with JudgeClient(settings.JUDGE_ADDRESS) as client:
+                for data in client.submit(self):
+                    try:
+                        header = data['header']
+                        self.HANDLERS[header](data)
+                    except KeyError:
+                        raise Exception(f'Judge gave an unknown header: {data}')
+        except socket.error:
+            # Trigger an internal error in case the socket fails or something.
+            data = {'header': 'internal-error', 'error': traceback.format_exc()}
+            self._handle_judging_begin(data)
+            self._handle_internal_error(data)
+            self._handle_judging_end(data)
 
     @property
     def finished(self):

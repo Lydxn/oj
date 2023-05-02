@@ -2,23 +2,23 @@
 
 {% load static %}
 
-{% block title %}{{ user }}{% endblock %}
+{% block title %}{{ profile }}{% endblock %}
 
 {% block css %}
-<link rel="stylesheet" href="{% static 'dist/css/user.css' %}">
+<link rel="stylesheet" href="{% static 'dist/css/profile.css' %}">
 {% endblock %}
 
 {% block content %}
 <h1 class="ruled-header">User Profile</h1>
 <div class="user-info">
     <div class="user-frame">
-        <img class="user-avatar" src="//avatars.githubusercontent.com/{{ user }}">
+        <img class="user-avatar" src="//avatars.githubusercontent.com/{{ profile }}">
     </div>
     <div class="user-name">
-        {{ user }}
+        {{ profile }}
     </div>
     <div class="user-solved">
-        <b>{{ num_problems_solved }}</b> problem{{ num_solved|pluralize }} solved.
+        <b>{{ num_problems_solved }}</b> problem{{ num_problems_solved|pluralize }} solved.
     </div>
 </div>
 {% endblock %}

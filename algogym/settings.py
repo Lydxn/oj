@@ -4,7 +4,8 @@ from pathlib import Path
 """Site configuration"""
 
 # Access token for authenticating the judge (keep this secret!)
-JUDGE_ACCESS_TOKEN = ''
+JUDGE_ACCESS_TOKEN = '*******************************************'
+
 JUDGE_ADDRESS = ('127.0.0.1', 1337)
 
 """Django confinguration"""
@@ -12,7 +13,7 @@ JUDGE_ADDRESS = ('127.0.0.1', 1337)
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = ''
+SECRET_KEY = 'd!m4y+(!-up5g(=@1&4)vyi)-nhvqxfjx9&t2u*^(5_qafk9ae'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -88,16 +89,15 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'algogym.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'oj',
-        'USER': 'postgres',
-        'PASSWORD': 'oricsenpai2357',
+        'NAME': 'algogym',
+        'USER': 'user',
+        'PASSWORD': 'password',
         'HOST': '127.0.0.1',
         'PORT': '5432'
     }
@@ -121,7 +121,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
@@ -137,7 +136,6 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static'
 ]
 STATIC_URL = '/static/'
-STATIC_ROOT = None
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -164,3 +162,9 @@ MARTOR_MARKDOWN_EXTENSIONS = [
     # App extensions
     'app.extensions.martor'
 ]
+
+# Load local settings from `local_settings.py`
+try:
+    from algogym.local_settings import *
+except ModuleNotFoundError:
+    pass

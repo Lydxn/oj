@@ -163,6 +163,10 @@ MARTOR_MARKDOWN_EXTENSIONS = [
     'app.extensions.martor'
 ]
 
+ALLOWED_HTML_TAGS = [
+    'div', 'i', 'p', 'span'
+]
+
 # Load local settings from `local_settings.py`
 try:
     from algogym.local_settings import *

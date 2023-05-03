@@ -164,7 +164,11 @@ MARTOR_MARKDOWN_EXTENSIONS = [
 ]
 
 ALLOWED_HTML_TAGS = [
-    'div', 'i', 'p', 'pre', 'span'
+    'a', 'abbr', 'b', 'blockquote', 'br', 'cite', 'code', 'command',
+    'dd', 'del', 'div', 'dl', 'dt', 'em', 'fieldset', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
+    'hr', 'i', 'iframe', 'img', 'input', 'ins', 'kbd', 'label', 'legend',
+    'li', 'ol', 'optgroup', 'option', 'p', 'pre', 'small', 'span', 'strong',
+    'sub', 'sup', 'table', 'tbody', 'td', 'tfoot', 'th', 'thead', 'tr', 'u', 'ul'
 ]
 
 # Load local settings from `local_settings.py`

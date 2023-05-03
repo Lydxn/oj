@@ -164,7 +164,7 @@ MARTOR_MARKDOWN_EXTENSIONS = [
 ]
 
 ALLOWED_HTML_TAGS = [
-    'div', 'i', 'p', 'span'
+    'div', 'i', 'p', 'pre', 'span'
 ]
 
 # Load local settings from `local_settings.py`
